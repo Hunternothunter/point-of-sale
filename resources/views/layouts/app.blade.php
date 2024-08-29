@@ -38,15 +38,9 @@
 
 
 <!DOCTYPE html>
-<!--
-  HOW TO USE:
-  data-layout: fluid (default), boxed
-  data-sidebar-theme: dark (default), colored, light
-  data-sidebar-position: left (default), right
-  data-sidebar-behavior: sticky (default), fixed, compact
--->
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-bs-theme="light" data-layout="fluid" data-sidebar-theme="dark" data-sidebar-position="left"
-    data-sidebar-behavior="sticky">
+
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-bs-theme="light" data-layout="fluid"
+    data-sidebar-theme="dark" data-sidebar-position="left" data-sidebar-behavior="sticky">
 
 <head>
     <meta charset="utf-8">
@@ -57,7 +51,7 @@
 
     <title>Point of Sale</title>
 
-    <link rel="canonical" href="https://appstack.bootlab.io/ecommerce-products.html" />
+    {{-- <link rel="canonical" href="https://appstack.bootlab.io/ecommerce-products.html" /> --}}
     <link rel="shortcut icon" href="img/favicon.ico">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -101,7 +95,7 @@
               c0.2,0.5,0,1.1-0.5,1.3l-9,4C10.3,20,10.1,20,10,20z" />
                     </svg>
 
-                    <span class="align-middle me-3">AppStack</span>
+                    <span class="align-middle me-3">Point of Sale</span>
                 </a>
 
                 <ul class="sidebar-nav">
@@ -151,11 +145,9 @@
                     </li>
                     <li class="sidebar-item">
                         <a data-bs-target="#projects" data-bs-toggle="collapse" class="sidebar-link collapsed">
-                            <i class="align-middle" data-lucide="layout"></i> <span
-                                class="align-middle">Projects</span>
+                            <i class="align-middle" data-lucide="layout"></i> <span class="align-middle">Projects</span>
                         </a>
-                        <ul id="projects" class="sidebar-dropdown list-unstyled collapse "
-                            data-bs-parent="#sidebar">
+                        <ul id="projects" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
                             <li class="sidebar-item"><a class='sidebar-link' href='/projects-overview'>Overview</a>
                             </li>
                             <li class="sidebar-item"><a class='sidebar-link' href='/projects-details'>Details</a>
@@ -469,7 +461,7 @@
                     <i class="hamburger align-self-center"></i>
                 </a>
 
-                <form class="d-none d-sm-inline-block">
+                {{-- <form class="d-none d-sm-inline-block">
                     <div class="input-group input-group-navbar">
                         <input type="text" class="form-control" placeholder="Search projects…"
                             aria-label="Search">
@@ -477,52 +469,7 @@
                             <i class="align-middle" data-lucide="search"></i>
                         </button>
                     </div>
-                </form>
-
-                <ul class="navbar-nav">
-                    <li class="nav-item px-2 dropdown d-none d-sm-inline-block">
-                        <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Mega menu
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-start dropdown-mega"
-                            aria-labelledby="servicesDropdown">
-                            <div class="d-md-flex align-items-start justify-content-start">
-                                <div class="dropdown-mega-list">
-                                    <div class="dropdown-header">UI Elements</div>
-                                    <a class="dropdown-item" href="#">Alerts</a>
-                                    <a class="dropdown-item" href="#">Buttons</a>
-                                    <a class="dropdown-item" href="#">Cards</a>
-                                    <a class="dropdown-item" href="#">Carousel</a>
-                                    <a class="dropdown-item" href="#">General</a>
-                                    <a class="dropdown-item" href="#">Grid</a>
-                                    <a class="dropdown-item" href="#">Modals</a>
-                                    <a class="dropdown-item" href="#">Tabs</a>
-                                    <a class="dropdown-item" href="#">Typography</a>
-                                </div>
-                                <div class="dropdown-mega-list">
-                                    <div class="dropdown-header">Forms</div>
-                                    <a class="dropdown-item" href="#">Layouts</a>
-                                    <a class="dropdown-item" href="#">Basic Inputs</a>
-                                    <a class="dropdown-item" href="#">Input Groups</a>
-                                    <a class="dropdown-item" href="#">Advanced Inputs</a>
-                                    <a class="dropdown-item" href="#">Editors</a>
-                                    <a class="dropdown-item" href="#">Validation</a>
-                                    <a class="dropdown-item" href="#">Wizard</a>
-                                </div>
-                                <div class="dropdown-mega-list">
-                                    <div class="dropdown-header">Tables</div>
-                                    <a class="dropdown-item" href="#">Basic Tables</a>
-                                    <a class="dropdown-item" href="#">Responsive Table</a>
-                                    <a class="dropdown-item" href="#">Table with Buttons</a>
-                                    <a class="dropdown-item" href="#">Column Search</a>
-                                    <a class="dropdown-item" href="#">Muulti Selection</a>
-                                    <a class="dropdown-item" href="#">Ajax Sourced Data</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+                </form> --}}
 
                 <div class="navbar-collapse collapse">
                     <ul class="navbar-nav navbar-align">
@@ -681,34 +628,6 @@
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-flag dropdown-toggle" href="#" id="languageDropdown"
-                                data-bs-toggle="dropdown">
-                                <img src="img/flags/us.png" alt="English" />
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <img src="img/flags/us.png" alt="English" width="20"
-                                        class="align-middle me-1" />
-                                    <span class="align-middle">English</span>
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <img src="img/flags/es.png" alt="Spanish" width="20"
-                                        class="align-middle me-1" />
-                                    <span class="align-middle">Spanish</span>
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <img src="img/flags/de.png" alt="German" width="20"
-                                        class="align-middle me-1" />
-                                    <span class="align-middle">German</span>
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <img src="img/flags/nl.png" alt="Dutch" width="20"
-                                        class="align-middle me-1" />
-                                    <span class="align-middle">Dutch</span>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
                             <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#"
                                 data-bs-toggle="dropdown">
                                 <i class="align-middle" data-lucide="settings"></i>
@@ -717,19 +636,21 @@
                             <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
                                 data-bs-toggle="dropdown">
                                 <img src="img/avatars/avatar.jpg" class="img-fluid rounded-circle me-1 mt-n2 mb-n2"
-                                    alt="{{ Auth::user()->name }}" width="40" height="40" /> <span>{{ Auth::user()->name }}</span>
+                                    alt="{{ Auth::user()->firstname }}" width="40" height="40" />
+                                <span>{{ Auth::user()->firstname }}</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class='dropdown-item' href='/pages-profile'><i class="align-middle me-1"
+                                <a class='dropdown-item' href="{{ route('profile.edit') }}"><i class="align-middle me-1"
                                         data-lucide="user"></i> Profile</a>
-                                <a class="dropdown-item" href="#"><i class="align-middle me-1"
+                                <a class="dropdown-item" href="{{ route('dashboard') }}"><i class="align-middle me-1"
                                         data-lucide="pie-chart"></i> Analytics</a>
                                 <div class="dropdown-divider"></div>
                                 <a class='dropdown-item' href='/pages-settings'>Settings & Privacy</a>
                                 <a class="dropdown-item" href="#">Help</a>
                                 <form action="{{ route('logout') }}" method="post">
                                     @csrf
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); this.closest('form').submit();">
                                         Sign out
                                     </a>
                                 </form>

@@ -1,11 +1,40 @@
-<section>
+<style>
+    .image-container {
+        width: 120px;
+        height: 110px;
+        border-radius: 50%;
+        overflow: hidden;
+        background-color: #f0f0f0;
+        border: 1px solid #ddd;
+        position: relative;
+        margin: 0 auto;
+        /* Center horizontally */
+    }
+
+    .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    #upload-button {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        /* Adjust padding as needed */
+    }
+</style>
+<section class="container mt-4">
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Profile Information') }}
+        <h2 class="h4 font-weight-semibold text-dark">
+            {{ __('Personal Information') }}
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600">
-            {{ __("Update your account's profile information and email address.") }}
+        <p class="mt-2 text-muted">
+            {{ __('Update your personal information and email address.') }}
         </p>
     </header>
 
@@ -13,52 +42,299 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" class="mt-4">
         @csrf
         @method('patch')
 
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
-            <x-input-error class="mt-2" :messages="$errors->get('name')" />
-        </div>
+        <div class="row g-3">
+            <div class="col col-md-8">
+                <!-- Name Fields -->
+                <div class="col-md-12 mb-3">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input id="firstname" name="firstname" type="text" class="form-control"
+                                    value="{{ old('firstname', $user->firstname) }}" required autofocus
+                                    autocomplete="given-name" />
+                                <label for="firstname">{{ __('First Name') }}</label>
+                                @if ($errors->has('firstname'))
+                                    <div class="form-text text-danger">{{ $errors->first('firstname') }}</div>
+                                @endif
+                            </div>
+                        </div>
 
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
-            <x-input-error class="mt-2" :messages="$errors->get('email')" />
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input id="middlename" name="middlename" type="text" class="form-control"
+                                    value="{{ old('middlename', $user->middlename) }}" autocomplete="middle-name" />
+                                <label for="middlename">{{ __('Middle Name') }}</label>
+                                @if ($errors->has('middlename'))
+                                    <div class="form-text text-danger">{{ $errors->first('middlename') }}</div>
+                                @endif
+                            </div>
+                        </div>
 
-            @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
-                <div>
-                    <p class="text-sm mt-2 text-gray-800">
-                        {{ __('Your email address is unverified.') }}
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input id="lastname" name="lastname" type="text" class="form-control"
+                                    value="{{ old('lastname', $user->lastname) }}" required
+                                    autocomplete="family-name" />
+                                <label for="lastname">{{ __('Last Name') }}</label>
+                                @if ($errors->has('lastname'))
+                                    <div class="form-text text-danger">{{ $errors->first('lastname') }}</div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                        <button form="send-verification" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                            {{ __('Click here to re-send the verification email.') }}
-                        </button>
-                    </p>
+                <!-- Gender, Mobile, and Birthdate Fields -->
+                <div class="col-md-12 mb-3">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <select id="gender" name="gender" class="form-select" required>
+                                    <option value="">{{ __('Select Gender') }}</option>
+                                    <option value="male"
+                                        {{ old('gender', $user->gender) == 'male' ? 'selected' : '' }}>
+                                        {{ __('Male') }}</option>
+                                    <option value="female"
+                                        {{ old('gender', $user->gender) == 'female' ? 'selected' : '' }}>
+                                        {{ __('Female') }}</option>
+                                    <option value="other"
+                                        {{ old('gender', $user->gender) == 'other' ? 'selected' : '' }}>
+                                        {{ __('Other') }}</option>
+                                </select>
+                                <label for="gender">{{ __('Gender') }}</label>
+                                @if ($errors->has('gender'))
+                                    <div class="form-text text-danger">{{ $errors->first('gender') }}</div>
+                                @endif
+                            </div>
+                        </div>
 
-                    @if (session('status') === 'verification-link-sent')
-                        <p class="mt-2 font-medium text-sm text-green-600">
-                            {{ __('A new verification link has been sent to your email address.') }}
-                        </p>
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input id="mobile" name="mobile" type="tel" class="form-control"
+                                    value="{{ old('mobile', $user->mobile) }}" pattern="[0-9]{10}" />
+                                <label for="mobile">{{ __('Mobile Number') }}</label>
+                                @if ($errors->has('mobile'))
+                                    <div class="form-text text-danger">{{ $errors->first('mobile') }}</div>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input id="birthdate" name="birthdate" type="date" class="form-control"
+                                    value="{{ old('birthdate', $user->birthdate) }}" required />
+                                <label for="birthdate">{{ __('Birthdate') }}</label>
+                                @if ($errors->has('birthdate'))
+                                    <div class="form-text text-danger">{{ $errors->first('birthdate') }}</div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Email Field -->
+                <div class="col-md-12 mb-3">
+                    <div class="form-floating">
+                        <input id="email" name="email" type="email" class="form-control"
+                            value="{{ old('email', $user->email) }}" required autocomplete="username" />
+                        <label for="email">{{ __('Email') }}</label>
+                        @if ($errors->has('email'))
+                            <div class="form-text text-danger">{{ $errors->first('email') }}</div>
+                        @endif
+
+                        @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())
+                            <div class="mt-3">
+                                <p class="text-muted">
+                                    {{ __('Your email address is unverified.') }}
+
+                                    <button form="send-verification" class="btn btn-link p-0 text-muted" type="submit">
+                                        {{ __('Click here to re-send the verification email.') }}
+                                    </button>
+                                </p>
+
+                                @if (session('status') === 'verification-link-sent')
+                                    <p class="mt-2 text-success">
+                                        {{ __('A new verification link has been sent to your email address.') }}
+                                    </p>
+                                @endif
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class="col col-md-4">
+                <!-- Profile Image and Preview -->
+                <div class="col-md-12 mb-3">
+                    <label for="profile-image-file" class="form-label">{{ __('Profile Picture') }}</label>
+                    <div class="mt-2 text-center">
+                        <div class="image-container">
+                            <img id="image-preview"
+                                src="{{ old('profile_image', $user->profile_image ? asset('storage/' . $user->profile_image) : '') }}"
+                                alt="Profile picture" class="img-fluid" />
+                        </div>
+                    </div>
+
+                    <!-- Hidden file input -->
+                    <input id="profile-image-file" name="profile_image" type="file" class="d-none"
+                        accept="image/*" onchange="previewImage(event)" />
+
+                    <!-- Styled link acting as file upload button -->
+                    <div class="text-center mt-3">
+                        <a href="#" id="upload-button" class="btn btn-primary">
+                            <i class="align-middle me-1" data-lucide="upload"></i>
+                            {{ __('Upload Image') }}
+                        </a>
+                    </div>
+
+                    @if ($errors->has('profile_image'))
+                        <div class="form-text text-danger">{{ $errors->first('profile_image') }}</div>
                     @endif
                 </div>
-            @endif
+
+            </div>
+
+            <!-- Address Fields -->
+            <div class="col-md-8 mb-3">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="form-floating">
+                            <input id="street_address" name="street_address" type="text" class="form-control"
+                                value="{{ old('street_address', $user->street_address) }}" />
+                            <label for="street_address">{{ __('Street Address') }}</label>
+                            @if ($errors->has('street_address'))
+                                <div class="form-text text-danger">{{ $errors->first('street_address') }}</div>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-floating">
+                            <input id="city" name="city" type="text" class="form-control"
+                                value="{{ old('city', $user->city) }}" />
+                            <label for="city">{{ __('City') }}</label>
+                            @if ($errors->has('city'))
+                                <div class="form-text text-danger">{{ $errors->first('city') }}</div>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-floating">
+                            <input id="state" name="state" type="text" class="form-control"
+                                value="{{ old('state', $user->state) }}" />
+                            <label for="state">{{ __('State') }}</label>
+                            @if ($errors->has('state'))
+                                <div class="form-text text-danger">{{ $errors->first('state') }}</div>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-floating">
+                            <input id="zip" name="zip" type="text" class="form-control"
+                                value="{{ old('zip', $user->zip) }}" />
+                            <label for="zip">{{ __('Zip Code') }}</label>
+                            @if ($errors->has('zip'))
+                                <div class="form-text text-danger">{{ $errors->first('zip') }}</div>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-floating">
+                            <input id="occupation" name="occupation" type="text" class="form-control"
+                                value="{{ old('occupation', $user->occupation) }}" />
+                            <label for="occupation">{{ __('Occupation') }}</label>
+                            @if ($errors->has('occupation'))
+                                <div class="form-text text-danger">{{ $errors->first('occupation') }}</div>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-floating">
+                            <input id="nationality" name="nationality" type="text" class="form-control"
+                                value="{{ old('nationality', $user->nationality) }}" />
+                            <label for="nationality">{{ __('Nationality') }}</label>
+                            @if ($errors->has('nationality'))
+                                <div class="form-text text-danger">{{ $errors->first('nationality') }}</div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Occupation, Nationality, and Bio Fields -->
+            <div class="col-md-8 mb-3">
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <div class="form-floating">
+                            <textarea id="bio" name="bio" class="form-control" rows="3">{{ old('bio', $user->bio) }}</textarea>
+                            <label for="bio">{{ __('Bio') }}</label>
+                            @if ($errors->has('bio'))
+                                <div class="form-text text-danger">{{ $errors->first('bio') }}</div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preferred Contact Method -->
+            <div class="col-md-4 mb-3">
+                <div class="form-floating">
+                    <select id="preferred_contact" name="preferred_contact" class="form-select" required>
+                        <option value="">{{ __('Select Contact Method') }}</option>
+                        <option value="email"
+                            {{ old('preferred_contact', $user->preferred_contact) == 'email' ? 'selected' : '' }}>
+                            {{ __('Email') }}</option>
+                        <option value="phone"
+                            {{ old('preferred_contact', $user->preferred_contact) == 'phone' ? 'selected' : '' }}>
+                            {{ __('Phone') }}</option>
+                    </select>
+                    <label for="preferred_contact">{{ __('Preferred Contact Method') }}</label>
+                    @if ($errors->has('preferred_contact'))
+                        <div class="form-text text-danger">{{ $errors->first('preferred_contact') }}</div>
+                    @endif
+                </div>
+            </div>
         </div>
 
-        <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+        <div class="d-flex align-items-center gap-3 mt-4">
+            <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
 
             @if (session('status') === 'profile-updated')
-                <p
-                    x-data="{ show: true }"
-                    x-show="show"
-                    x-transition
-                    x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600"
-                >{{ __('Saved.') }}</p>
+                <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
+                    class="text-muted mb-0">
+                    {{ __('Saved.') }}
+                </p>
             @endif
         </div>
     </form>
 </section>
+
+<script>
+    document.getElementById('upload-button').addEventListener('click', function(e) {
+        e.preventDefault(); // Prevent the default action of the link
+        document.getElementById('profile-image-file').click(); // Trigger file input click
+    });
+
+    function previewImage(event) {
+        const input = event.target;
+        const file = input.files[0];
+        const preview = document.getElementById('image-preview');
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = ''; // Reset preview if no file
+        }
+    }
+</script>
