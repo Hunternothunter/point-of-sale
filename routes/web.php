@@ -2,11 +2,16 @@
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -18,6 +23,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/products', [ProductController::class, 'index'])->middleware(['auth', 'verified'])->name('product.index');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/products', [ProductController::class, 'index'])->name('product.index');
+    Route::get('/products/create', [ProductController::class, 'create'])->name('product.create');
+    Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
+    Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
+});
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

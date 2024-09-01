@@ -19,8 +19,8 @@
                         <div class="text-sm-end">
                             <button type="button" class="btn btn-light btn-lg me-2"><i data-lucide="download"></i>
                                 Export</button>
-                            <button type="button" class="btn btn-primary btn-lg"><i data-lucide="plus"></i> New
-                                Product</button>
+                            <a href="{{ route('product.create') }}" type="button" class="btn btn-primary btn-lg"><i data-lucide="plus"></i> New
+                                Product</a>
                         </div>
                     </div>
                 </div>
@@ -42,355 +42,111 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <div class="form-check fs-4">
-                                    <input class="form-check-input" type="checkbox">
-                                    <label class="form-check-label"></label>
-                                </div>
-                            </td>
-                            <td class="d-flex align-items-center">
-                                <div
-                                    class="p-2 rounded bg-body-tertiary d-flex justify-content-center align-items-center me-2 w-50px h-50px">
-                                    <img src="img/products/product-9.png" class="mw-100 mh-100" alt="Apple iPad Pro">
-                                </div>
-                                <p class="mb-0">
-                                    <strong>Apple iPad Pro</strong><br />
-                                    <span class="text-muted">Silver</span>
-                                </p>
-                            </td>
-                            <td>$ 1,399.00</td>
-                            <td>48</td>
-                            <td>Tablets</td>
-                            <td>
-                                <i class="fa-solid fa-star text-warning"></i> 4.6 <span class="text-muted">out of 55
-                                    Reviews</span>
-                            </td>
-                            <td class="text-end">
-                                <button type="button" class="btn btn-light">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="form-check fs-4">
-                                    <input class="form-check-input" type="checkbox">
-                                    <label class="form-check-label"></label>
-                                </div>
-                            </td>
-                            <td class="d-flex align-items-center">
-                                <div
-                                    class="p-2 rounded bg-body-tertiary d-flex justify-content-center align-items-center me-2 w-50px h-50px">
-                                    <img src="img/products/product-8.png" class="mw-100 mh-100" alt="Apple iPad Pro">
-                                </div>
-                                <p class="d-inline-block mb-0">
-                                    <strong>Apple iPad Pro</strong><br />
-                                    <span class="text-muted">Space Gray</span>
-                                </p>
-                            </td>
-                            <td>$ 1,399.00</td>
-                            <td>48</td>
-                            <td>Tablets</td>
-                            <td>
-                                <i class="fa-solid fa-star text-warning"></i> 4.3 <span class="text-muted">out of 25
-                                    Reviews</span>
-                            </td>
-                            <td class="text-end">
-                                <button type="button" class="btn btn-light">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="form-check fs-4">
-                                    <input class="form-check-input" type="checkbox">
-                                    <label class="form-check-label"></label>
-                                </div>
-                            </td>
-                            <td class="d-flex align-items-center">
-                                <div
-                                    class="p-2 rounded bg-body-tertiary d-flex justify-content-center align-items-center me-2 w-50px h-50px">
-                                    <img src="img/products/product-4.png" class="mw-100 mh-100"
-                                        alt="Apple iPhone 15 Pro Max">
-                                </div>
-                                <p class="d-inline-block mb-0">
-                                    <strong>Apple iPhone 15 Pro Max</strong><br />
-                                    <span class="text-muted">Blue Titanium</span>
-                                </p>
-                            </td>
-                            <td>$ 1499.00</td>
-                            <td>38</td>
-                            <td>Smartphones</td>
-                            <td>
-                                <i class="fa-solid fa-star text-warning"></i> 4.6 <span class="text-muted">out of 40
-                                    Reviews</span>
-                            </td>
-                            <td class="text-end">
-                                <button type="button" class="btn btn-light">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="form-check fs-4">
-                                    <input class="form-check-input" type="checkbox">
-                                    <label class="form-check-label"></label>
-                                </div>
-                            </td>
-                            <td class="d-flex align-items-center">
-                                <div
-                                    class="p-2 rounded bg-body-tertiary d-flex justify-content-center align-items-center me-2 w-50px h-50px">
-                                    <img src="img/products/product-3.png" class="mw-100 mh-100"
-                                        alt="Apple iPhone 15 Pro Max">
-                                </div>
-                                <p class="d-inline-block mb-0">
-                                    <strong>Apple iPhone 15 Pro Max</strong><br />
-                                    <span class="text-muted">Natural Titanium</span>
-                                </p>
-                            </td>
-                            <td>$ 1499.00</td>
-                            <td>30</td>
-                            <td>Smartphones</td>
-                            <td>
-                                <i class="fa-solid fa-star text-warning"></i> 4.8 <span class="text-muted">out of 50
-                                    Reviews</span>
-                            </td>
-                            <td class="text-end">
-                                <button type="button" class="btn btn-light">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="form-check fs-4">
-                                    <input class="form-check-input" type="checkbox">
-                                    <label class="form-check-label"></label>
-                                </div>
-                            </td>
-                            <td class="d-flex align-items-center">
-                                <div
-                                    class="p-2 rounded bg-body-tertiary d-flex justify-content-center align-items-center me-2 w-50px h-50px">
-                                    <img src="img/products/product-5.png" class="mw-100 mh-100"
-                                        alt="Apple iPhone 15 Pro Max">
-                                </div>
-                                <p class="d-inline-block mb-0">
-                                    <strong>Apple iPhone 15 Pro Max</strong><br />
-                                    <span class="text-muted">White Titanium</span>
-                                </p>
-                            </td>
-                            <td>$ 1499.00</td>
-                            <td>45</td>
-                            <td>Smartphones</td>
-                            <td>
-                                <i class="fa-solid fa-star text-warning"></i> 4.9 <span class="text-muted">out of 60
-                                    Reviews</span>
-                            </td>
-                            <td class="text-end">
-                                <button type="button" class="btn btn-light">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="form-check fs-4">
-                                    <input class="form-check-input" type="checkbox">
-                                    <label class="form-check-label"></label>
-                                </div>
-                            </td>
-                            <td class="d-flex align-items-center">
-                                <div
-                                    class="p-2 rounded bg-body-tertiary d-flex justify-content-center align-items-center me-2 w-50px h-50px">
-                                    <img src="img/products/product-7.png" class="mw-100 mh-100"
-                                        alt="Apple MacBook Pro 16\" ">
-                                </div>
-                                <p class="d-inline-block mb-0 ">
-                                    <strong>Apple MacBook Pro 16"</strong><br />
-                                    <span class="text-muted">Silver</span>
-                                </p>
-                            </td>
-                            <td>$ 2,399.00</td>
-                            <td>55</td>
-                            <td>Notebooks</td>
-                            <td>
-                                <i class="fa-solid fa-star text-warning"></i> 4.7 <span class="text-muted">out of 45
-                                    Reviews</span>
-                            </td>
-                            <td class="text-end">
-                                <button type="button" class="btn btn-light">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="form-check fs-4">
-                                    <input class="form-check-input" type="checkbox">
-                                    <label class="form-check-label"></label>
-                                </div>
-                            </td>
-                            <td class="d-flex align-items-center">
-                                <div
-                                    class="p-2 rounded bg-body-tertiary d-flex justify-content-center align-items-center me-2 w-50px h-50px">
-                                    <img src="img/products/product-6.png" class="mw-100 mh-100"
-                                        alt="Apple MacBook Pro 16\" ">
-                                </div>
-                                <p class="d-inline-block mb-0 ">
-                                    <strong>Apple MacBook Pro 16"</strong><br />
-                                    <span class="text-muted">Space Black</span>
-                                </p>
-                            </td>
-                            <td>$ 2,399.00</td>
-                            <td>50</td>
-                            <td>Notebooks</td>
-                            <td>
-                                <i class="fa-solid fa-star text-warning"></i> 4.4 <span class="text-muted">out of 30
-                                    Reviews</span>
-                            </td>
-                            <td class="text-end">
-                                <button type="button" class="btn btn-light">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="form-check fs-4">
-                                    <input class="form-check-input" type="checkbox">
-                                    <label class="form-check-label"></label>
-                                </div>
-                            </td>
-                            <td class="d-flex align-items-center">
-                                <div
-                                    class="p-2 rounded bg-body-tertiary d-flex justify-content-center align-items-center me-2 w-50px h-50px">
-                                    <img src="img/products/product-11.png" class="mw-100 mh-100"
-                                        alt="Apple Watch SE">
-                                </div>
-                                <p class="d-inline-block mb-0">
-                                    <strong>Apple Watch SE</strong><br />
-                                    <span class="text-muted">Midnight</span>
-                                </p>
-                            </td>
-                            <td>$ 299.00</td>
-                            <td>49</td>
-                            <td>Smartwatches</td>
-                            <td>
-                                <i class="fa-solid fa-star text-warning"></i> 4.7 <span class="text-muted">out of 40
-                                    Reviews</span>
-                            </td>
-                            <td class="text-end">
-                                <button type="button" class="btn btn-light">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="form-check fs-4">
-                                    <input class="form-check-input" type="checkbox">
-                                    <label class="form-check-label"></label>
-                                </div>
-                            </td>
-                            <td class="d-flex align-items-center">
-                                <div
-                                    class="p-2 rounded bg-body-tertiary d-flex justify-content-center align-items-center me-2 w-50px h-50px">
-                                    <img src="img/products/product-12.png" class="mw-100 mh-100"
-                                        alt="Apple Watch SE">
-                                </div>
-                                <p class="d-inline-block mb-0">
-                                    <strong>Apple Watch SE</strong><br />
-                                    <span class="text-muted">Silver</span>
-                                </p>
-                            </td>
-                            <td>$ 299.00</td>
-                            <td>30</td>
-                            <td>Smartwatches</td>
-                            <td>
-                                <i class="fa-solid fa-star text-warning"></i> 4.7 <span class="text-muted">out of 40
-                                    Reviews</span>
-                            </td>
-                            <td class="text-end">
-                                <button type="button" class="btn btn-light">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="form-check fs-4">
-                                    <input class="form-check-input" type="checkbox">
-                                    <label class="form-check-label"></label>
-                                </div>
-                            </td>
-                            <td class="d-flex align-items-center">
-                                <div
-                                    class="p-2 rounded bg-body-tertiary d-flex justify-content-center align-items-center me-2 w-50px h-50px">
-                                    <img src="img/products/product-10.png" class="mw-100 mh-100"
-                                        alt="Apple Watch SE">
-                                </div>
-                                <p class="d-inline-block mb-0">
-                                    <strong>Apple Watch SE</strong><br />
-                                    <span class="text-muted">Starlight</span>
-                                </p>
-                            </td>
-                            <td>$ 299.00</td>
-                            <td>54</td>
-                            <td>Smartwatches</td>
-                            <td>
-                                <i class="fa-solid fa-star text-warning"></i> 4.5 <span class="text-muted">out of 35
-                                    Reviews</span>
-                            </td>
-                            <td class="text-end">
-                                <button type="button" class="btn btn-light">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="form-check fs-4">
-                                    <input class="form-check-input" type="checkbox">
-                                    <label class="form-check-label"></label>
-                                </div>
-                            </td>
-                            <td class="d-flex align-items-center">
-                                <div
-                                    class="p-2 rounded bg-body-tertiary d-flex justify-content-center align-items-center me-2 w-50px h-50px">
-                                    <img src="img/products/product-1.png" class="mw-100 mh-100"
-                                        alt="Apple Watch Series 9">
-                                </div>
-                                <p class="d-inline-block mb-0">
-                                    <strong>Apple Watch Series 9</strong><br />
-                                    <span class="text-muted">Midnight</span>
-                                </p>
-                            </td>
-                            <td>$ 349.00</td>
-                            <td>42</td>
-                            <td>Smartwatches</td>
-                            <td>
-                                <i class="fa-solid fa-star text-warning"></i> 4.2 <span class="text-muted">out of 20
-                                    Reviews</span>
-                            </td>
-                            <td class="text-end">
-                                <button type="button" class="btn btn-light">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="form-check fs-4">
-                                    <input class="form-check-input" type="checkbox">
-                                    <label class="form-check-label"></label>
-                                </div>
-                            </td>
-                            <td class="d-flex align-items-center">
-                                <div
-                                    class="p-2 rounded bg-body-tertiary d-flex justify-content-center align-items-center me-2 w-50px h-50px">
-                                    <img src="img/products/product-2.png" class="mw-100 mh-100"
-                                        alt="Apple Watch Series 9">
-                                </div>
-                                <p class="d-inline-block mb-0">
-                                    <strong>Apple Watch Series 9</strong><br />
-                                    <span class="text-muted">Starlight</span>
-                                </p>
-                            </td>
-                            <td>$ 349.00</td>
-                            <td>54</td>
-                            <td>Smartwatches</td>
-                            <td>
-                                <i class="fa-solid fa-star text-warning"></i> 4.5 <span class="text-muted">out of 35
-                                    Reviews</span>
-                            </td>
-                            <td class="text-end">
-                                <button type="button" class="btn btn-light">View</button>
-                            </td>
-                        </tr>
+                        @foreach ($products as $product)
+                            <tr>
+                                <td>
+                                    <div class="form-check fs-4">
+                                        <input class="form-check-input" type="checkbox">
+                                        <label class="form-check-label"></label>
+                                    </div>
+                                </td>
+                                <td class="d-flex align-items-center">
+                                    <div
+                                        class="p-2 rounded bg-body-tertiary d-flex justify-content-center align-items-center me-2 w-50px h-50px">
+                                        <img src="img/products/product-9.png" class="mw-100 mh-100"
+                                            alt="Apple iPad Pro">
+                                    </div>
+                                    <p class="mb-0">
+                                        <strong>{{ $product->product_name }}</strong><br />
+                                        <span class="text-muted">Silver</span>
+                                    </p>
+                                </td>
+                                <td>$ {{ $product->unitprice }}</td>
+                                <td>{{ $product->stock }}</td>
+                                <td>{{ $product->category }}</td>
+                                <td>
+                                    <i class="fa-solid fa-star text-warning"></i> {{ $product->product_review }} <span
+                                        class="text-muted">out of {{ $product->sum_review }}
+                                        Reviews</span>
+                                </td>
+                                <td class="text-end d-flex align-items-center gap-1">
+                                    <button type="button" class="btn btn-primary btn-edit" data-url="{{ route('product.edit', $product) }}">
+                                        <i class="" data-lucide="square-pen"></i>
+                                    </button>
+                                    <form action="{{ route('product.destroy', $product) }}" method="POST"
+                                        class="m-0">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-delete">
+                                            <i class="" data-lucide="trash-2"></i>
+                                        </button>
+                                    </form>
+                                    <button type="button" class="btn btn-light btn-view">
+                                        <i class="" data-lucide="eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            @if (session('success'))
+                Swal.fire({
+                    title: 'Success!',
+                    text: '{{ session('success') }}',
+                    icon: 'success',
+                    timer: 2000
+                });
+            @endif
+
+            // Edit button click event
+            document.querySelectorAll('.btn-edit').forEach(button => {
+                button.addEventListener('click', function() {
+                    const editUrl = this.getAttribute('data-url');
+
+                    Swal.fire({
+                        title: 'Edit Item',
+                        text: 'Are you sure you want to edit this item?',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Yes, edit it!',
+                        cancelButtonText: 'Cancel'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = editUrl;
+                        }
+                    });
+                });
+            });
+
+            // Delete button click event
+            document.querySelectorAll('.btn-delete').forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent form submission
+
+                    const form = this.closest('form');
+
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: 'You won\'t be able to revert this!',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Yes, delete it!',
+                        cancelButtonText: 'Cancel'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Submit the form if confirmed
+                            form.submit();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </x-app-layout>

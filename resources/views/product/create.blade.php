@@ -1,3 +1,8 @@
-<div>
-    <!-- Live as if you were to die tomorrow. Learn as if you were to live forever. - Mahatma Gandhi -->
-</div>
+<x-app-layout>
+    <h1>
+        Create product
+    </h1>
+
+
+    <a href="{{ route('product.index') }}" class="btn btn-outline-primary">Cancel</a>
+</x-app-layout>

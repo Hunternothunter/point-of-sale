@@ -58,15 +58,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
     <link href="css/app.css" rel="stylesheet">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-    <!-- BEGIN SETTINGS -->
-    <!-- Remove this after purchasing -->
-    <script src="js/settings.js"></script>
-    <!-- END SETTINGS -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q3ZYEKLQ68"></script>
+    
+    {{-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q3ZYEKLQ68"></script> --}}
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -122,8 +120,7 @@
                     </li>
                     <li class="sidebar-item">
                         <a data-bs-target="#ecommerce" data-bs-toggle="collapse" class="sidebar-link collapsed">
-                            <i class="align-middle" data-lucide="shopping-bag"></i> <span
-                                class="align-middle">E-Commerce</span>
+                            <i class="align-middle" data-lucide="shopping-bag"></i> <span class="align-middle">Manage Products</span>
                         </a>
                         <ul id="ecommerce" class="sidebar-dropdown list-unstyled collapse show"
                             data-bs-parent="#sidebar">
@@ -635,13 +632,16 @@
 
                             <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
                                 data-bs-toggle="dropdown">
-                                <img src="img/avatars/avatar.jpg" class="img-fluid rounded-circle me-1 mt-n2 mb-n2"
-                                    alt="{{ Auth::user()->firstname }}" width="40" height="40" />
+                                <img src="{{ asset('storage/' . Auth::user()->profile_picture) }}"
+                                    class="rounded-circle me-1 mt-n2 mb-n2" alt="{{ Auth::user()->firstname }}"
+                                    width="40" height="40" />
+
+
                                 <span>{{ Auth::user()->firstname }}</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class='dropdown-item' href="{{ route('profile.edit') }}"><i class="align-middle me-1"
-                                        data-lucide="user"></i> Profile</a>
+                                <a class='dropdown-item' href="{{ route('profile.edit') }}"><i
+                                        class="align-middle me-1" data-lucide="user"></i> Profile</a>
                                 <a class="dropdown-item" href="{{ route('dashboard') }}"><i class="align-middle me-1"
                                         data-lucide="pie-chart"></i> Analytics</a>
                                 <div class="dropdown-divider"></div>
@@ -685,7 +685,7 @@
                         </div>
                         <div class="col-6 text-end">
                             <p class="mb-0">
-                                &copy; 2024 - <a class='text-muted' href='/'>AppStack</a>
+                                &copy; 2024 - <a class='text-muted' href='/'>Hunter</a>
                             </p>
                         </div>
                     </div>
@@ -695,7 +695,8 @@
     </div>
 
     <script src="js/app.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             $("#datatables-products").DataTable({

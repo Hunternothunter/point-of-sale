@@ -8,7 +8,6 @@
         border: 1px solid #ddd;
         position: relative;
         margin: 0 auto;
-        /* Center horizontally */
     }
 
     .image-container img {
@@ -24,7 +23,6 @@
         display: inline-flex;
         align-items: center;
         padding: 0.5rem 1rem;
-        /* Adjust padding as needed */
     }
 </style>
 <section class="container mt-4">
@@ -42,7 +40,7 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-4">
+    <form method="post" action="{{ route('profile.update') }}" class="mt-4" enctype="multipart/form-data">
         @csrf
         @method('patch')
 
@@ -101,9 +99,6 @@
                                     <option value="female"
                                         {{ old('gender', $user->gender) == 'female' ? 'selected' : '' }}>
                                         {{ __('Female') }}</option>
-                                    <option value="other"
-                                        {{ old('gender', $user->gender) == 'other' ? 'selected' : '' }}>
-                                        {{ __('Other') }}</option>
                                 </select>
                                 <label for="gender">{{ __('Gender') }}</label>
                                 @if ($errors->has('gender'))
@@ -114,11 +109,11 @@
 
                         <div class="col-md-4">
                             <div class="form-floating">
-                                <input id="mobile" name="mobile" type="tel" class="form-control"
-                                    value="{{ old('mobile', $user->mobile) }}" pattern="[0-9]{10}" />
+                                <input id="mobile" name="mobile_num" type="tel" class="form-control"
+                                    value="{{ old('mobile_num', $user->mobile_num) }}" pattern="[0-9]{11}" />
                                 <label for="mobile">{{ __('Mobile Number') }}</label>
-                                @if ($errors->has('mobile'))
-                                    <div class="form-text text-danger">{{ $errors->first('mobile') }}</div>
+                                @if ($errors->has('mobile_num'))
+                                    <div class="form-text text-danger">{{ $errors->first('mobile_num') }}</div>
                                 @endif
                             </div>
                         </div>
@@ -173,32 +168,32 @@
                     <div class="mt-2 text-center">
                         <div class="image-container">
                             <img id="image-preview"
-                                src="{{ old('profile_image', $user->profile_image ? asset('storage/' . $user->profile_image) : '') }}"
+                                src="{{ old('profile_picture', $user->profile_picture ? asset('storage/' . $user->profile_picture) : 'https://www.transparentpng.com/thumb/user/gray-user-profile-icon-png-fP8Q1P.png') }}"
                                 alt="Profile picture" class="img-fluid" />
                         </div>
                     </div>
 
                     <!-- Hidden file input -->
-                    <input id="profile-image-file" name="profile_image" type="file" class="d-none"
+                    <input id="profile-image-file" name="profile_picture" type="file" class="d-none"
                         accept="image/*" onchange="previewImage(event)" />
 
                     <!-- Styled link acting as file upload button -->
                     <div class="text-center mt-3">
-                        <a href="#" id="upload-button" class="btn btn-primary">
+                        <a href="#" id="upload-button" class="btn btn-primary"
+                            onclick="document.getElementById('profile-image-file').click(); return false;">
                             <i class="align-middle me-1" data-lucide="upload"></i>
                             {{ __('Upload Image') }}
                         </a>
                     </div>
 
-                    @if ($errors->has('profile_image'))
-                        <div class="form-text text-danger">{{ $errors->first('profile_image') }}</div>
+                    @if ($errors->has('profile_picture'))
+                        <div class="form-text text-danger">{{ $errors->first('profile_picture') }}</div>
                     @endif
                 </div>
-
             </div>
 
             <!-- Address Fields -->
-            <div class="col-md-8 mb-3">
+            {{-- <div class="col-md-8 mb-3">
                 <div class="row g-3">
                     <div class="col-md-4">
                         <div class="form-floating">
@@ -266,10 +261,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <!-- Occupation, Nationality, and Bio Fields -->
-            <div class="col-md-8 mb-3">
+            {{-- <div class="col-md-8 mb-3">
                 <div class="row g-3">
                     <div class="col-md-12">
                         <div class="form-floating">
@@ -281,10 +276,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <!-- Preferred Contact Method -->
-            <div class="col-md-4 mb-3">
+            {{-- <div class="col-md-4 mb-3">
                 <div class="form-floating">
                     <select id="preferred_contact" name="preferred_contact" class="form-select" required>
                         <option value="">{{ __('Select Contact Method') }}</option>
@@ -300,7 +295,7 @@
                         <div class="form-text text-danger">{{ $errors->first('preferred_contact') }}</div>
                     @endif
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <div class="d-flex align-items-center gap-3 mt-4">
@@ -317,6 +312,17 @@
 </section>
 
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        @if (session('message'))
+            Swal.fire({
+                title: 'Success!',
+                text: '{{ session('message') }}',
+                icon: 'success',
+                timer: 2000
+            });
+        @endif
+    });
+
     document.getElementById('upload-button').addEventListener('click', function(e) {
         e.preventDefault(); // Prevent the default action of the link
         document.getElementById('profile-image-file').click(); // Trigger file input click
